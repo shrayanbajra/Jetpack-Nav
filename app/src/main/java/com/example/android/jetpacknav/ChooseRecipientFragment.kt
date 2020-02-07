@@ -16,7 +16,7 @@ import androidx.navigation.Navigation
 class ChooseRecipientFragment : Fragment(), View.OnClickListener {
 
     private lateinit var btnNext: Button
-    private lateinit var btnCancelTransaction: Button
+    private lateinit var btnCancel: Button
 
     private lateinit var navController: NavController
 
@@ -32,12 +32,12 @@ class ChooseRecipientFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         btnNext = view.findViewById(R.id.btn_next)
-        btnCancelTransaction = view.findViewById(R.id.btn_cancel_transaction)
+        btnCancel = view.findViewById(R.id.btn_cancel)
 
         navController = Navigation.findNavController(view)
 
         btnNext.setOnClickListener(this)
-        btnCancelTransaction.setOnClickListener(this)
+        btnCancel.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -46,7 +46,7 @@ class ChooseRecipientFragment : Fragment(), View.OnClickListener {
             R.id.btn_next -> navController.navigate(
                 R.id.action_chooseRecipientFragment_to_specifyAmountFragment
             )
-            R.id.btn_cancel_transaction -> activity?.onBackPressed()
+            R.id.btn_cancel -> activity?.onBackPressed()
         }
     }
 }

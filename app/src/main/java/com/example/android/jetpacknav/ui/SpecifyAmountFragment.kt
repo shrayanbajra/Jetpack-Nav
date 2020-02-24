@@ -1,4 +1,4 @@
-package com.example.android.jetpacknav
+package com.example.android.jetpacknav.ui
 
 
 import android.os.Bundle
@@ -14,11 +14,10 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.example.android.jetpacknav.R
+import com.example.android.jetpacknav.data.Money
 import java.math.BigDecimal
 
-/**
- * A simple [Fragment] subclass.
- */
 class SpecifyAmountFragment : Fragment(), View.OnClickListener {
 
     private lateinit var recipient: String
@@ -34,6 +33,10 @@ class SpecifyAmountFragment : Fragment(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        getArgumentsFromChooseRecipientFragment()
+    }
+
+    private fun getArgumentsFromChooseRecipientFragment() {
         recipient = arguments?.getString("recipient") ?: ""
     }
 
@@ -48,40 +51,51 @@ class SpecifyAmountFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initViews(view)
+        tvRecipient.text = "Sending money to $recipient"
+        initNavController(view)
+        setOnClickListenersOnButtons()
+    }
+
+    private fun initViews(view: View) {
         tvRecipient = view.findViewById(R.id.tv_recipient)
         etAmount = view.findViewById(R.id.et_input_amount)
 
         btnSend = view.findViewById(R.id.btn_send)
         btnCancelTransaction = view.findViewById(R.id.btn_cancel_transaction)
+    }
 
-        tvRecipient.text = "Sending money to $recipient"
-
+    private fun initNavController(view: View) {
         navController = Navigation.findNavController(view)
+    }
 
+    private fun setOnClickListenersOnButtons() {
         btnSend.setOnClickListener(this)
         btnCancelTransaction.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.btn_send -> {
-                if (!TextUtils.isEmpty(etAmount.text.toString().trim())) {
-                    val amount = Money(BigDecimal(etAmount.text.toString().trim()))
-                    val bundle = bundleOf(
-                        "recipient" to recipient,
-                        "amount" to amount
-                    )
-                    navController.navigate(
-                        R.id.action_specifyAmountFragment_to_confirmationFragment,
-                        bundle
-                    )
-                } else {
-                    Toast.makeText(activity, "Please Enter Amount", Toast.LENGTH_SHORT).show()
-                }
-            }
-            R.id.btn_cancel_transaction -> {
-                activity?.onBackPressed()
-            }
+            R.id.btn_send -> proceedToConfirmation()
+            R.id.btn_cancel_transaction -> activity?.onBackPressed()
         }
+    }
+
+    private fun proceedToConfirmation() {
+        if (isAmountValid()) {
+            navigateToConfirmationFragment()
+        } else {
+            Toast.makeText(activity, "Please Enter Amount", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun isAmountValid(): Boolean {
+        return !TextUtils.isEmpty(etAmount.text.toString().trim())
+    }
+
+    private fun navigateToConfirmationFragment() {
+        val amount = Money(BigDecimal(etAmount.text.toString().trim()))
+        val bundle = bundleOf("recipient" to recipient, "amount" to amount)
+        navController.navigate(R.id.action_specifyAmountFragment_to_confirmationFragment, bundle)
     }
 }

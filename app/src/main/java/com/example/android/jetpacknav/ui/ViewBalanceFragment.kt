@@ -1,4 +1,4 @@
-package com.example.android.jetpacknav
+package com.example.android.jetpacknav.ui
 
 
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.android.jetpacknav.R
 
 /**
  * A simple [Fragment] subclass.

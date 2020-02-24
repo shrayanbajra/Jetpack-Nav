@@ -1,4 +1,4 @@
-package com.example.android.jetpacknav
+package com.example.android.jetpacknav.data
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

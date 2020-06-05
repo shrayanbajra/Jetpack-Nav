@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.android.jetpacknav.ui.MainFragment"
+        android:name="com.example.android.jetpacknav.ui.fragments.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
 
@@ -38,7 +38,7 @@
 
     <fragment
         android:id="@+id/chooseRecipientFragment"
-        android:name="com.example.android.jetpacknav.ui.ChooseRecipientFragment"
+        android:name="com.example.android.jetpacknav.ui.fragments.ChooseRecipientFragment"
         android:label="fragment_choose_recipient"
         tools:layout="@layout/fragment_choose_recipient">
 
@@ -53,7 +53,7 @@
 
     <fragment
         android:id="@+id/specifyAmountFragment"
-        android:name="com.example.android.jetpacknav.ui.SpecifyAmountFragment"
+        android:name="com.example.android.jetpacknav.ui.fragments.SpecifyAmountFragment"
         android:label="fragment_specify_amount"
         tools:layout="@layout/fragment_specify_amount">
 
@@ -72,7 +72,7 @@
 
     <fragment
         android:id="@+id/confirmationFragment"
-        android:name="com.example.android.jetpacknav.ui.ConfirmationFragment"
+        android:name="com.example.android.jetpacknav.ui.fragments.ConfirmationFragment"
         android:label="fragment_confirmation"
         tools:layout="@layout/fragment_confirmation">
 
@@ -88,13 +88,13 @@
 
     <fragment
         android:id="@+id/viewBalanceFragment"
-        android:name="com.example.android.jetpacknav.ui.ViewBalanceFragment"
+        android:name="com.example.android.jetpacknav.ui.fragments.ViewBalanceFragment"
         android:label="fragment_view_balance"
         tools:layout="@layout/fragment_view_balance" />
 
     <fragment
         android:id="@+id/viewTransactionFragment"
-        android:name="com.example.android.jetpacknav.ui.ViewTransactionFragment"
+        android:name="com.example.android.jetpacknav.ui.fragments.ViewTransactionFragment"
         android:label="fragment_view_transaction"
         tools:layout="@layout/fragment_view_transaction" />
 

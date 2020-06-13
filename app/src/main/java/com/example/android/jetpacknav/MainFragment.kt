@@ -33,13 +33,15 @@ class MainFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         btnNavigateToViewBalance.setOnClickListener {
-            // Navigate to ViewBalanceFragment
-            findNavController().navigate(R.id.action_mainFragment_to_viewBalanceFragment)
+            // Lets Navigate to ViewBalanceFragment
+            val action = MainFragmentDirections
+                .actionMainFragmentToViewBalanceFragment(userID = 1)
+            findNavController().navigate(action)
         }
 
 
         btnNavigateToViewTransactions.setOnClickListener {
-            // Navigate to ViewTransactionsFragment
+            // Lets Navigate to ViewTransactionsFragment
             findNavController().navigate(R.id.action_mainFragment_to_viewTransactionsFragment)
         }
     }

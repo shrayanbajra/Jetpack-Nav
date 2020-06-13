@@ -16,11 +16,18 @@
             android:id="@+id/action_mainFragment_to_viewTransactionsFragment"
             app:destination="@id/viewTransactionsFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/viewBalanceFragment"
         android:name="com.example.android.jetpacknav.ViewBalanceFragment"
         android:label="fragment_view_balance"
-        tools:layout="@layout/fragment_view_balance" />
+        tools:layout="@layout/fragment_view_balance">
+
+        <argument
+            android:name="userID"
+            app:argType="integer" />
+    </fragment>
+
     <fragment
         android:id="@+id/viewTransactionsFragment"
         android:name="com.example.android.jetpacknav.ViewTransactionsFragment"
